@@ -18,7 +18,7 @@ function ProfileAuth0() {
        isAuthenticated && ( 
         <ProfileDatails>
         
-        <ProfileDiv>Hi {user.name.split(' ')[0]}, welcome to Amazona</ProfileDiv>
+        <ProfileDiv>Hi {user.name.split(' ')[0].slice(0,10)}, welcome to Amazona</ProfileDiv>
        </ProfileDatails>
        ) 
       

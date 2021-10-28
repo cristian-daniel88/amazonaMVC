@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const CategoriesStyled = styled.div`
   position: fixed;
   left: 10%;
-  top: 10%;
+  top: 9%;
   height: 100vh;
   width: 30%;
   background-color: white;

@@ -13,6 +13,8 @@ text-align: center;
 @media screen and (max-width: 800px) {
     height: 31vh;
 }
+
+
 `
 
 export const ProfileDiv = styled.div`

@@ -12,7 +12,7 @@ display: flex;
 align-items: center;
 justify-content: space-between;
 background-color: #203040;
-padding: 5px;
+
 user-select: none;
 flex-wrap: wrap;
 z-index: 100;
@@ -33,6 +33,7 @@ align-self: center;
 border: .02em solid #fff;
 border-radius: 10%;
 margin-right: 10%;
+margin-left: 1%;
 
 
 
@@ -42,6 +43,7 @@ export const IconBurguerNavBar = styled(DehazeIcon)`
 font-size: 30px;
 color: #fff;
 cursor: pointer;
+
 
 `
 export const H1Amazona = styled.h1`
@@ -69,19 +71,35 @@ width: 30%;
 
 export const InputSearch = styled.input`
 width: 100%;
-height: 7vh;
+height: 5vh;
 box-sizing: border-box;
 border: none;
 border-radius: .5rem 0 0 .5rem;
 border-right: none;
+font-size: 15px;
 
-
+font-weight: 500;
+letter-spacing: 0.5px;
 &:hover, &:focus  {
     filter: contrast(100%);
     box-shadow: 0px 0px 15px 0px grey;
     background-size: 150%;
     outline: none;
   }
+
+
+  @media screen and (max-width: 800px) {
+    margin-top: 1%;
+    font-size: 13px;
+
+  }
+  @media screen and (max-width: 500px) {
+
+
+    
+  margin-left: 10%;
+  }
+
 
 `
 
@@ -91,12 +109,13 @@ justify-content: center;
 align-items: center;
 width: 18%;
 background-color: #f0c040;
-height: 7vh;
+height: 5vh;
 border: none;
 border-radius: 0 .5rem .5rem 0;
 border-right: none;
 @media screen and (max-width: 800px) {
   margin-right: 10%;
+  margin-top: 1%;
 
   }
   @media screen and (max-width: 500px) {
