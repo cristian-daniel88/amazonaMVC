@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 
 
@@ -10,7 +11,10 @@ import {AddCart, Cart, CartGrid, CartImage, CartLabel, Price, ProductsContainer,
 
 
 function Products({products}) {
-    const loading = products.loading;
+  const loading = products.loading;
+  const searchProduct = products.arrayProducts;
+  console.log(searchProduct[0]?.name)
+  
  
     
  

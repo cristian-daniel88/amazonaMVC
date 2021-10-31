@@ -8,36 +8,46 @@ import { fetchProducts } from './redux/product/productActions';
 import { useDispatch, useSelector } from 'react-redux';
 import Products from './Components/Products/Products';
 import Tope from "./Components/Tope/Tope";
+import SearchProduct from "./Components/SearchProducts/SearchProduct";
 
 
 
 function App() {
   const {isAuthenticated} = useAuth0();
   const dispatch = useDispatch();
-  const stateProducts = useSelector(state => state.product);
- 
-
+  
+  
+  
+  
+  
+  
+  
+  
+  
   // start fetch Products
   const fetchProductsJson = async () => {
     try {
-    const response = await fetch(process.env.REACT_APP_PRODUCTOS_URL);
-    const data = await response.json();
-    setTimeout(() => {
-      dispatch(fetchProducts(data))
-      
-    }, 1000);
+      const response = await fetch(process.env.REACT_APP_PRODUCTOS_URL);
+      const data = await response.json();
+      setTimeout(() => {
+        dispatch(fetchProducts(data))
+        
+      }, 1000);
     } catch (error) {
       console.log(error)
     }
   }
-
+  
   useEffect(() => {
-   
+    
     fetchProductsJson()
-      
+    
   }, [])
   // end fetch Products
-
+  const stateAllProduct = useSelector(state => state.product);
+  
+  
+  
   return (
     <>
     
@@ -48,7 +58,7 @@ function App() {
     {isAuthenticated ? ( <ProfileAuth0/>) : (<Tope/>)}
 
 
-    <Products products={stateProducts}></Products>
+    <Products products={stateAllProduct} ></Products>
    
     
 
@@ -57,7 +67,7 @@ function App() {
     
     {/* <FormCreateUser/> */}
 
-   
+    
 
 
     </>

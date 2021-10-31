@@ -1,9 +1,9 @@
-import {FETCH_PRODUCTS } from "./productActions";
-
+import { FETCH_PRODUCTS, FIND, CLEAN } from "./productActions";
 
 const INITIAL_STATE = {
- products: [],
- loading: true,
+  products: [],
+  loading: true,
+  arrayProducts: [],
 };
 
 const productReducer = (state = INITIAL_STATE, action) => {
@@ -15,7 +15,19 @@ const productReducer = (state = INITIAL_STATE, action) => {
         products: action.payload,
       };
 
+    case FIND:
+      return {
+        ...state,
+        arrayProducts: [...state.arrayProducts, action.payload],
+        loading: false,
+        
+      };
 
+    case CLEAN:
+      return {
+        ...state,
+        arrayProducts: [],
+      };
 
     default:
       return state;

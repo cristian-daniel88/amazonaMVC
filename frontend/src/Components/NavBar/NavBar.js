@@ -20,18 +20,66 @@ import LogOutAuth0 from "../LogOutAuth0/LogOutAuth0";
 import ImgLoginAuth from "../ImgLoginAuth/ImgLoginAuth";
 import {  Cart, Cart0, CartContainer } from "../Cart/CartStyles";
 import * as hamburguerActions from "../../redux/hamburguer/hamburguerActions"
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+
+import { useFind } from "../../hooks/useFind";
+import { cleanAction, findAction } from "../../redux/product/productActions";
+
 
 
 
 function NavBar() {
   const {isAuthenticated} = useAuth0();
   const dispatch = useDispatch();
+  const products = useSelector(state => state.product.products);
+  let arrayProducts = Object.entries(products);
+  let arrayProducts0 = arrayProducts[0]?.[1];
+  const {find, setFind} = useFind()
+ 
+  
+
+
+  function handler (e) {
+    setFind(e.target.value.toLowerCase());
+    
+    if (find === '' ) {
+      dispatch(cleanAction());
+     }
+  
+  }
+  
+  function findProduct(e) {
+    e.preventDefault();
+    if (find === '' ) {
+     return  dispatch(cleanAction());
+    }
+     dispatch(cleanAction());
+    
+    for(let producto of arrayProducts0){
+      
+      let nombre = producto.name.toLowerCase();
+      if (nombre.indexOf(find) !== -1 ) {
+        
+      
+        dispatch(findAction(producto))
+          
+        } 
+      }
+
+      setFind('')
+
+    }
+
+   
+  
+ 
 
   
   const handleToggle = () => {
     dispatch(hamburguerActions.toggleHamburguerHidden())
   }
+
+  
 
 
   return (
@@ -47,8 +95,8 @@ function NavBar() {
 
       </ContainerBurguerAndH1>
 
-      <ContainerInputAndSearch type='sumbit'>
-          <InputSearch type='text' required/>
+      <ContainerInputAndSearch type='sumbit' onSubmit={findProduct}>
+          <InputSearch type='text'  onChange={handler}/>
 
           <ContainerSearch type='submit'>
               <IconSearch/>
