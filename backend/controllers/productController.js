@@ -26,11 +26,30 @@ const productsGet = async (req, res= response) => {
 
 };
 
+const productosGetName = async (req , res ) => {
+     
+    const {termino} = req.body
+
+
+    regex = new RegExp(termino, 'i')
+
+    const products = await Product.find({name: regex});
+
+
+
+    res.json({
+        result: products
+    });
+}
+
+
+
 
 
 module.exports = {
     productPost,
-    productsGet
+    productsGet,
+    productosGetName
 }
 
 
