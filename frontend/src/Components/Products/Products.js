@@ -12,11 +12,6 @@ import {AddCart, Cart, CartGrid, CartImage, CartLabel, Price, ProductsContainer,
 
 function Products({products}) {
   const loading = products.loading;
-  const searchProduct = products.arrayProducts;
-  console.log(searchProduct[0]?.name)
-  
- 
-    
  
     // order to category
     let obj = null
@@ -40,7 +35,9 @@ function Products({products}) {
        <>
        
         <ProductsContainer>
-            {loading ? (<Loading/>) : (<>{obj.map((value, key) => {
+
+          
+            {loading ? (<Loading/>) : (<>{obj?.map((value, key) => {
               let valor1 = value[0];
               let valor2 = value[1]
               return(<div key={key}>
@@ -65,6 +62,9 @@ function Products({products}) {
 
               </div>)
             })}</>)}
+
+
+           
             
         
         </ProductsContainer>

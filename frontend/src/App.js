@@ -9,6 +9,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import Products from './Components/Products/Products';
 import Tope from "./Components/Tope/Tope";
 import SearchProduct from "./Components/SearchProducts/SearchProduct";
+import { Switch, Route } from "react-router-dom";
+
 
 
 
@@ -50,24 +52,26 @@ function App() {
   
   return (
     <>
-    
     <NavBar/>
     <Categories/>
-
-
     {isAuthenticated ? ( <ProfileAuth0/>) : (<Tope/>)}
-
-
+    
+    <Switch>
+    
+    <Route exact path='/'>
     <Products products={stateAllProduct} ></Products>
+    </Route>
    
+    <Route exact path='/search'>
+    <SearchProduct/>
+    </Route>
+    
     
 
-    {/* <FormLogin/> */}
-    
+    </Switch>
     
     {/* <FormCreateUser/> */}
-
-    
+    {/* <FormLogin/> */}
 
 
     </>

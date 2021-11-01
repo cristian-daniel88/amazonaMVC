@@ -1,9 +1,11 @@
-import { FETCH_PRODUCTS, FIND, CLEAN } from "./productActions";
+import { FETCH_PRODUCTS, FIND, CLEAN, RESULT, LOADING } from "./productActions";
 
 const INITIAL_STATE = {
   products: [],
   loading: true,
-  arrayProducts: [],
+  arrayProductsFind: [],
+  results: '',
+  loadingSearch: true,
 };
 
 const productReducer = (state = INITIAL_STATE, action) => {
@@ -18,16 +20,28 @@ const productReducer = (state = INITIAL_STATE, action) => {
     case FIND:
       return {
         ...state,
-        arrayProducts: [...state.arrayProducts, action.payload],
-        loading: false,
+        arrayProductsFind: action.payload,
+        loadingSearch: false,
+      
         
       };
+    case RESULT: 
+    return {
+      ...state,
+      results: action.payload
+    }
 
     case CLEAN:
       return {
         ...state,
         arrayProducts: [],
       };
+    
+    case LOADING :
+      return {
+        ...state,
+        loadingSearch: true
+      }
 
     default:
       return state;

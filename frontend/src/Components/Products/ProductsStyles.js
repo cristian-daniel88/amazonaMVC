@@ -95,12 +95,29 @@ font-weight: 500;
 
 export const AddCart = styled.button`
 position: absolute;
-font-size: 15px;
+font-family: 'Roboto', sans-serif;
+font-size: 16px;
 left: 72%;
 top: 60%;
 font-weight: 500;
-background-color: beige;
+background-color: #494989;
+border-radius: 5%;
+font-weight: 600;
+color: white;
 cursor: pointer;
+border: none;
+transition-duration: 0.4s;
+  &:active {
+
+	opacity: 0.5;
+}
+
+
+
+
+@media screen and (max-width: 700px) {
+   margin-right: 5%;
+  }
 `
 
 export const SoldOut = styled.div`

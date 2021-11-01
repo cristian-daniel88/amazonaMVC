@@ -7,6 +7,7 @@ import { Auth0Provider } from '@auth0/auth0-react';
 import { PersistGate } from "redux-persist/integration/react";
 import { store, persistor } from "./redux/store";
 import { Provider } from "react-redux";
+import { BrowserRouter as Router } from "react-router-dom";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -19,7 +20,9 @@ ReactDOM.render(
      clientId="A3smkUcKVA2ivhUIvUr39LzDkrgiqwv5"
      redirectUri={window.location.origin}
      >
+    <Router>
     <App />
+    </Router>
     </Auth0Provider>
 
 
