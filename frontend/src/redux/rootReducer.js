@@ -4,6 +4,7 @@ import storage from "redux-persist/lib/storage";
 
 
 import hamburguerReducer from "./hamburguer/hamburguerReducer";
+import notFoundReducer from "./notFound/notFoundReducer";
 import productReducer from "./product/productReducer";
 import tokenReducer from "./token/tokenReducer";
 
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
     hamburguer: hamburguerReducer,
     product: productReducer,
     token: tokenReducer,
+    notFound: notFoundReducer
  
 
  

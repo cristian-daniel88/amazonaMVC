@@ -7,6 +7,7 @@ export const LOADING = "LOADING"
 
 
 
+
 export const fetchProducts = (value) => ({
     type: FETCH_PRODUCTS,
     payload: value
@@ -29,4 +30,5 @@ export const resultAction = (value) => ({
 export const loadingAction = () => ({
   type: LOADING
 });
+
 

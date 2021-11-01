@@ -1,5 +1,7 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux'
+import { notFoundAction } from '../../redux/notFound/notFoundActions';
+
 import Loading from '../Loading/Loading';
 import { AddCartSearch, CartGridSearch, CartImageSearch, CartLabelSearch, CartSearch, NotFound, PriceSearch, ResultSearch, SearchProductsContainer, SoldOutSearch, StockSearch } from './SearchProductsStyles'
 
@@ -11,11 +13,22 @@ export default function SearchProduct() {
     const state = useSelector(state => state?.product.arrayProductsFind);
     const loadingsearch = useSelector(state => state.product.loadingSearch);
     const result = useSelector(state => state?.product.results);
-    console.log(loadingsearch)
+    const notFound = useSelector(state => state.notFound.notFound);
+    
+  
+
+     
+
+    
+
+  
+    
+      
+  
 
     
  
-   
+
 
 
     return (
@@ -39,16 +52,16 @@ export default function SearchProduct() {
                 <StockSearch>Stock: {val.stock}</StockSearch>
                 <SoldOutSearch></SoldOutSearch>
                 <AddCartSearch>Add Cart</AddCartSearch>
-                
-               
                 </CartSearch>
             
             )
         })}
-        </CartGridSearch>) : (<NotFound>Not Found</NotFound>)}
+        </CartGridSearch>) : ''}
+         {notFound && (<NotFound>Not Found</NotFound>)}
          <div style={{marginTop: '-280px'}}>
-        {loadingsearch ? (<Loading/>) : ''}
+          {loadingsearch && (<Loading/>)}
          </div>
+
 
         </SearchProductsContainer>
 

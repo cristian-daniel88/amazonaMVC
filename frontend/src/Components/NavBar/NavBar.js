@@ -23,6 +23,8 @@ import { useHistory } from "react-router-dom";
 
 import { useFind } from "../../hooks/useFind";
 import { findAction, loadingAction, resultAction } from "../../redux/product/productActions";
+import { useNotFound } from "../../hooks/useNotFound";
+import { notFoundAction } from "../../redux/notFound/notFoundActions";
 
 var axios = require("axios");
 
@@ -31,12 +33,17 @@ function NavBar() {
   const dispatch = useDispatch();
   const history = useHistory();
   const { find, setFind } = useFind();
-  
+  const notFound = useSelector(state => state.notFound.notFound)
   function handler(e) {
     setFind(e.target.value.toLowerCase());
   }
+ 
   
   function findProduct(e) {
+    if (notFound) {
+      dispatch(notFoundAction()); 
+    }
+    
     dispatch(loadingAction())
     e.preventDefault();
     
@@ -53,7 +60,7 @@ function NavBar() {
     
     var config = {
       method: "post",
-      url: "http://localhost:8080/api/products/search",
+      url: process.env.REACT_APP_SEARCH_URL,
       headers: {},
       data: data,
     };
@@ -61,6 +68,13 @@ function NavBar() {
     axios(config)
     .then(function (response) {
       
+      if (response.data.result.length === 0) {
+        
+        setTimeout(() => {
+          dispatch(notFoundAction())
+          
+        }, 2000);
+      }
       setTimeout(() => {
         
         dispatch(findAction(response.data.result))
