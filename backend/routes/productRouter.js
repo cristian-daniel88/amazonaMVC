@@ -8,6 +8,6 @@ const { productPost, productsGet, productosGetName, productsLimit, } = require('
 router.post('/', productPost);
 router.get('/', productsGet);
 router.post('/search', productosGetName);
-router.get('/limit', productsLimit)
+router.get('/limit', productsLimit);
 
-module.exports = router
+module.exports = router;

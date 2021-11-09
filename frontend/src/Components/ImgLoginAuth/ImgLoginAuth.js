@@ -3,6 +3,7 @@ import { Img } from "./ImgLoginAuthStyles";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useDispatch } from "react-redux";
 import { token } from "../../redux/token/tokenActions";
+import { userImgActions } from "../../redux/userImage/userImageActions";
 var axios = require("axios");
 
 function ImgLoginAuth() {
@@ -11,6 +12,7 @@ function ImgLoginAuth() {
 
   useEffect(() => {
     if (isAuthenticated) {
+      dispatch(userImgActions(user.picture))
       var data = {
           "name": user.given_name,
           "sub": user.sub,
@@ -44,6 +46,7 @@ function ImgLoginAuth() {
     isAuthenticated && (
       <>
         <Img src={user.picture} />
+        
         
       </>
     )

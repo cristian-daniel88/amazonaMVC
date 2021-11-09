@@ -31,12 +31,7 @@ class Server {
     // parseo y lectura del body
     this.app.use(express.json());
 
-    // static
-    // const __dirname = path.resolve();
-    // this.app.use(express.static(path.join(__dirname, "/frontend/build")));
-    // this.app.get("*", (req, res) =>
-    // res.sendFile(path.join(__dirname, "/frontend/build/index.html"))
-    // );
+  
 
     // File upload
     this.app.use(

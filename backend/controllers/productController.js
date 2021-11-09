@@ -20,8 +20,10 @@ const productsGet = async (req, res= response) => {
     const products = await Product.find();
 
     res.json({
-        products
+         products
+        
     })
+
 
 };
 
