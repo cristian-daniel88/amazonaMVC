@@ -75,6 +75,7 @@ function App() {
 
       if(email) {
 
+               socket.emit('joinprivatechat', { email, room: email });
         return socket.emit('joinRoom', { email, room: 'sala' });
       }
     

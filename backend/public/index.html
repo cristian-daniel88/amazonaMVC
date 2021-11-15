@@ -21,26 +21,26 @@
 </head>
 <link rel="stylesheet" href="./styles/style.css">
 <body>
-    <h1>Socket Server</h1>
-    <hr>
+    <div id='containerAll'>
 
-    <p>
-        Server Status:
-        <span style="color: green;" id="lblOnline">Online</span>
-        <span style="color: red;" id="lblOffline">Offline</span>
-    </p>
-
-    <button id="buscar">BUSCAR</button>
-
-    <h2>Users Online:</h2>
-    <ul id="users">
-
-    </ul>
-
-
-  
-    <script src="./socket.io/socket.io.js"></script>
-    <script src="./js/socket-client.js"></script>
-  
+        <h1>Amazona Manager</h1>
+        <hr>
+        
+        <p>
+            Server Status:
+            <span id="lblOnline">Online</span>
+            <span id="lblOffline">Offline</span>
+        </p>
+        
+        
+        
+        <h2>Users Online:</h2>
+        <ul id="users">
+            
+        </ul>
+    </div>
+        <script src="./socket.io/socket.io.js"></script>
+        <script src="./js/socket-client.js"></script>
+        
 </body>
 </html>
