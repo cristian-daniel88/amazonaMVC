@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux'
-import { notFoundAction } from '../../redux/notFound/notFoundActions';
+import React, {  } from 'react';
+import { useSelector } from 'react-redux'
 
 import Loading from '../Loading/Loading';
 import { AddCartSearch, CartGridSearch, CartImageSearch, CartLabelSearch, CartSearch, NotFound, PriceSearch, ResultSearch, SearchProductsContainer, SoldOutSearch, StockSearch } from './SearchProductsStyles'
@@ -9,7 +8,7 @@ import { AddCartSearch, CartGridSearch, CartImageSearch, CartLabelSearch, CartSe
 
 
 
-export default function SearchProduct() {
+ function SearchProduct() {
     const state = useSelector(state => state?.product.arrayProductsFind);
     const loadingsearch = useSelector(state => state.product.loadingSearch);
     const result = useSelector(state => state?.product.results);
@@ -69,3 +68,6 @@ export default function SearchProduct() {
        </>
     )
 }
+
+export default  SearchProduct
+

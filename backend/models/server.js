@@ -5,6 +5,7 @@ const path = require("path");
 
 const fileUpload = require("express-fileupload");
 const { dbConnection } = require("../database.js/config");
+const { socketController } = require("../sockets/controller");
 
 class Server {
   constructor() {
@@ -12,8 +13,16 @@ class Server {
     this.port = process.env.PORT;
     this.usersPath = "/api/users";
     this.productPath = "/api/products";
-  
+    this.server = require('http').createServer(this.app);
+    this.io = require('socket.io')(this.server, {
+      cors: {
+        origin: "http://localhost:3000",
+        methods: ["GET", "POST"]
 
+      }
+    })
+  
+    this.sockets();
     this.connectedDB();
 
     this.middlewares();
@@ -30,6 +39,8 @@ class Server {
 
     // parseo y lectura del body
     this.app.use(express.json());
+
+    this.app.use(express.static('public'));
 
   
 
@@ -55,11 +66,21 @@ class Server {
     
   }
 
-  listen() {
+  listen2() {
     this.app.listen(this.port, () => {
       console.log("server working in", this.port);
     });
   }
+  listen() {
+    this.server.listen(this.port, () => {
+      console.log("server working in", this.port);
+    });
+  }
+
+  sockets() {
+    this.io.on('connection' ,(socket)=> socketController(socket, this.io));
+  }
+
 }
 
 module.exports = Server;

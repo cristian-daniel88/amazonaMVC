@@ -1,5 +1,5 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, {  } from 'react';
+
 
 
 
@@ -15,7 +15,7 @@ function Products({products}) {
  
     // order to category
     let obj = null
-    const typesclothe = products.products.products?.reduce((res, pok) => {
+     products.products.products?.reduce((res, pok) => {
         if (!res[pok.category]) {
           res[pok.category] = [];
         }
@@ -72,4 +72,4 @@ function Products({products}) {
     )
 }
 
-export default Products
+export default  Products

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import {
   ContainerBurguerAndH1,
@@ -23,7 +23,7 @@ import { useHistory } from "react-router-dom";
 
 import { useFind } from "../../hooks/useFind";
 import { findAction, loadingAction, resultAction } from "../../redux/product/productActions";
-import { useNotFound } from "../../hooks/useNotFound";
+
 import { notFoundAction } from "../../redux/notFound/notFoundActions";
 
 var axios = require("axios");
@@ -37,6 +37,8 @@ function NavBar() {
   function handler(e) {
     setFind(e.target.value.toLowerCase());
   }
+
+
  
   
   function findProduct(e) {
@@ -110,15 +112,15 @@ function NavBar() {
         </ContainerBurguerNavBar>
 
         <H1Amazona onClick={home}>
-          <a
+          <p
             style={{
-              display: "line",
+              display: "inline",
               fontFamily: "'Satisfy', cursive",
               paddingTop: "1%",
             }}
           >
             A
-          </a>
+          </p>
           mazona
         </H1Amazona>
       </ContainerBurguerAndH1>
@@ -146,4 +148,4 @@ function NavBar() {
   );
 }
 
-export default NavBar;
+export default NavBar

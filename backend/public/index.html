@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Socket Server</title>
+    <script>
+    //    const password = prompt('your password');
+    //    const pass = 1234;
+
+    //    if(password == pass) {
+    //          alert('Conected!')
+    //    } else {
+    //       alert('error');
+    //       window.location.reload();
+          
+    //    }
+    </script>
+</head>
+<link rel="stylesheet" href="./styles/style.css">
+<body>
+    <h1>Socket Server</h1>
+    <hr>
+
+    <p>
+        Server Status:
+        <span style="color: green;" id="lblOnline">Online</span>
+        <span style="color: red;" id="lblOffline">Offline</span>
+    </p>
+
+    <button id="buscar">BUSCAR</button>
+
+    <h2>Users Online:</h2>
+    <ul id="users">
+
+    </ul>
+
+
+  
+    <script src="./socket.io/socket.io.js"></script>
+    <script src="./js/socket-client.js"></script>
+  
+</body>
+</html>

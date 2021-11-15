@@ -1,4 +1,4 @@
-import { FETCH_PRODUCTS, FIND, CLEAN, RESULT, LOADING, NOTFOUND } from "./productActions";
+import { FETCH_PRODUCTS, FIND, CLEAN, RESULT, LOADING} from "./productActions";
 
 const INITIAL_STATE = {
   products: [],
