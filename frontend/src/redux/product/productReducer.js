@@ -1,4 +1,4 @@
-import { FETCH_PRODUCTS, FIND, CLEAN, RESULT, LOADING} from "./productActions";
+import { FETCH_PRODUCTS, FIND, CLEAN, RESULT, LOADING, SAVEPRODUCT} from "./productActions";
 
 const INITIAL_STATE = {
   products: [],
@@ -6,6 +6,7 @@ const INITIAL_STATE = {
   arrayProductsFind: [],
   results: '',
   loadingSearch: true,
+  product: null
 
 };
 
@@ -42,6 +43,12 @@ const productReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         loadingSearch: true
+      }
+    case SAVEPRODUCT :
+      return {
+        ...state,
+        product:action.payload
+
       }
   
     default:

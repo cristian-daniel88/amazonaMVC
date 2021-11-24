@@ -57,6 +57,18 @@ const productosGetName = async (req , res ) => {
 }
 
 
+const productChoice = async (req, res) => {
+    const {id} = req.params
+
+    const product = await Product.findById(id)
+  
+        
+    res.json({
+         product
+    });
+}
+
+
 
 
 
@@ -64,7 +76,8 @@ module.exports = {
     productPost,
     productsGet,
     productosGetName,
-    productsLimit
+    productsLimit,
+    productChoice
 }
 
 

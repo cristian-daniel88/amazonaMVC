@@ -11,8 +11,15 @@ function userJoin(id, username, room) {
 }
 
 function getCurrentUser(id) {
+
   return users.find(user => user.id === id);
 }
+
+function getUser() {
+  return users
+}
+
+
 function getRoomUsers(room) {
   
   return users.filter(user => user.room === room);
@@ -51,7 +58,8 @@ function getRoomUserPrivater(room) {
     getRoomUsers,
     userLeave,
     userJoinPrivate,
-    getRoomUserPrivater
+    getRoomUserPrivater,
+    getUser
    
   
   };

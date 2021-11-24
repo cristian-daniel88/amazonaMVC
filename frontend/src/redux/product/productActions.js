@@ -2,7 +2,8 @@ export const FETCH_PRODUCTS = "FETCH_PRODUCTS";
 export const FIND = "FIND";
 export const CLEAN = "CLEAN";
 export const RESULT = "RESULT";
-export const LOADING = "LOADING"
+export const LOADING = "LOADING";
+export const SAVEPRODUCT = "SAVEPRODUCT";
 
 
 
@@ -30,5 +31,10 @@ export const resultAction = (value) => ({
 export const loadingAction = () => ({
   type: LOADING
 });
+
+export const saveProduct = (value) => ({
+  type: SAVEPRODUCT,
+  payload: value
+})
 
 

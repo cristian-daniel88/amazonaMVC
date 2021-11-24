@@ -13,6 +13,8 @@ class Server {
     this.port = process.env.PORT;
     this.usersPath = "/api/users";
     this.productPath = "/api/products";
+    this.orderPath = "/api/order";
+   
     this.server = require('http').createServer(this.app);
     this.io = require('socket.io')(this.server, {
       cors: {
@@ -63,6 +65,8 @@ class Server {
   routes() {
     this.app.use(this.usersPath, require("../routes/userRouter"));
     this.app.use(this.productPath, require("../routes/productRouter"));
+    this.app.use(this.orderPath, require("../routes/orderRouter"));
+   
     
   }
 

@@ -1,6 +1,7 @@
 import { combineReducers } from "redux";
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
+import cartReducer from "./cart/cartReducer";
 import emailReducer from "./email/emailReducer";
 
 
@@ -25,6 +26,7 @@ const rootReducer = combineReducers({
     notFound: notFoundReducer,
     imgUser: userImgReducer,
     email: emailReducer,
+    cart: cartReducer,
  
 
  

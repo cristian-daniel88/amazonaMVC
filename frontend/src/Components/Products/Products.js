@@ -1,4 +1,6 @@
 import React, {  } from 'react';
+import Chat from '../Chat/Chat';
+import { useHistory } from "react-router-dom";
 
 
 
@@ -10,8 +12,16 @@ import {AddCart, Cart, CartGrid, CartImage, CartLabel, Price, ProductsContainer,
 
 
 
-function Products({products}) {
+function Products({products, socket, username, room ,messageServer}) {
   const loading = products.loading;
+  const history = useHistory();
+
+
+  const goProduct = (id, obj) => {
+   
+    history.push(`./product/${id}`);
+    
+  }
  
     // order to category
     let obj = null
@@ -35,7 +45,8 @@ function Products({products}) {
        <>
        
         <ProductsContainer>
-
+              {messageServer && (  <Chat socket={socket} username={username} room={room} messageServer={messageServer} />)}
+            
           
             {loading ? (<Loading/>) : (<>{obj?.map((value, key) => {
               let valor1 = value[0];
@@ -49,14 +60,17 @@ function Products({products}) {
 
                <CartGrid> {valor2.map((val, i) => {
                 return (
-                  <Cart key={i}>
+                  
+                  <Cart key={i} onClick={()=> goProduct(val.uid, val)}>
                   <CartImage src={val.img}></CartImage>
                   <CartLabel>{val.name.slice(0,20)}</CartLabel>
                   <Price>Price: £{val.price}</Price>
                   <Stock>Stock: {val.stock}</Stock>
                   <SoldOut></SoldOut>
                   <AddCart>Add Cart</AddCart>
+                  
                   </Cart>
+                  
                 )
               })} </CartGrid>
 

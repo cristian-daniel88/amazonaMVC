@@ -4,10 +4,10 @@ export const CategoriesStyled = styled.div`
   position: fixed;
   left: 10%;
   top: 9%;
-  height: 100vh;
   width: 30%;
   background-color: white;
   height: calc(100% - 11.5px);
+  height: 100vh;
   z-index: 2;
   box-shadow: 4px 0px 5px 0px grey;
   display: flex;

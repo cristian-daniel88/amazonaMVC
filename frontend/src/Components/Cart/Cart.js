@@ -1,5 +1,5 @@
 import React from 'react'
-import { Cart0, CartContainer} from './CartStyles'
+import {  CartContainer} from './CartStyles'
 
 function Cart() {
     return (

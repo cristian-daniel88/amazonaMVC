@@ -7,7 +7,7 @@ import SearchIcon from '@mui/icons-material/Search';
 export const ContainerNavBar = styled.nav`
 position: fixed;
 width: 100%;
-height: auto;
+height: 10%;
 display: flex;
 align-items: center;
 justify-content: space-between;
@@ -16,6 +16,11 @@ background-color: #203040;
 user-select: none;
 flex-wrap: wrap;
 z-index: 100;
+
+@media screen and (max-width: 550px) {
+  height: auto;
+  }
+
 `
 
 
