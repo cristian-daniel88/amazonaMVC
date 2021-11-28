@@ -1,3 +1,4 @@
+
 import { combineReducers } from "redux";
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
@@ -9,6 +10,8 @@ import hamburguerReducer from "./hamburguer/hamburguerReducer";
 import notFoundReducer from "./notFound/notFoundReducer";
 import productReducer from "./product/productReducer";
 import tokenReducer from "./token/tokenReducer";
+import updateReviewReducer from "./updateReview/updateReviewReducer";
+import userReducer from "./user/userReducer";
 import userImgReducer from "./userImage/userImageReducer";
 
 
@@ -16,7 +19,7 @@ import userImgReducer from "./userImage/userImageReducer";
 const persistConfig = {
   key: "root",
   storage: storage,
-  whitelist: [],
+  whitelist: ["cart"],
 };
 
 const rootReducer = combineReducers({
@@ -27,6 +30,8 @@ const rootReducer = combineReducers({
     imgUser: userImgReducer,
     email: emailReducer,
     cart: cartReducer,
+    user: userReducer,
+    reviews : updateReviewReducer,
  
 
  

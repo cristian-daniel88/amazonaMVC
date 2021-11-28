@@ -92,6 +92,14 @@ left: 72%;
 top: 20%;
 font-weight: 500;
 `
+export const RatingContainer = styled.div`
+
+position: absolute;
+font-size: 15px;
+left: 72%;
+top: 35%;
+font-weight: 500;
+`
 
 export const AddCart = styled.button`
 position: absolute;

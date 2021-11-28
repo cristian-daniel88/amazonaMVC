@@ -8,7 +8,8 @@ import { useHistory } from "react-router-dom";
 
 import Loading from '../Loading/Loading';
 
-import { Cart, CartGrid, CartImage, CartLabel, Price, ProductsContainer, SoldOut, Stock, SubtitleStyled} from './ProductsStyles';
+import { Cart, CartGrid, CartImage, CartLabel, Price, ProductsContainer, RatingContainer, SoldOut, Stock, SubtitleStyled} from './ProductsStyles';
+import Rating from '../Rating/Rating';
 
 
 
@@ -66,6 +67,19 @@ function Products({products, socket, username, room ,messageServer}) {
                   <CartLabel>{val.name.slice(0,20)}</CartLabel>
                   <Price>Price: £{val.price}</Price>
                   <Stock>Stock: {val.stock}</Stock>
+                   <RatingContainer>
+
+                    
+                     
+              
+              
+                       
+
+                    
+                     
+                     <Rating rating={ val.review.reduce((acc, item)=> {return acc + Number(item.raiting)}, 0) / val.review.length} />
+                     
+                     </RatingContainer>
                   <SoldOut></SoldOut>
                  
                   

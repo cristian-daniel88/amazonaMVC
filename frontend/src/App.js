@@ -17,7 +17,7 @@ import { useCallback } from "react";
 import CartPage from "./Components/CartPage/CartPage";
 import Shipping from "./Components/Shipping/Shipping";
 
-const socket = io.connect("http://localhost:8080");
+const socket = io.connect(process.env.REACT_APP_SOCKET);
 
 
 

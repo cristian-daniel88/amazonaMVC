@@ -5,6 +5,7 @@ import { useDispatch} from "react-redux";
 import { token } from "../../redux/token/tokenActions";
 import { userImgActions } from "../../redux/userImage/userImageActions";
 import { takeEmail } from "../../redux/email/emailActions";
+import { getUser } from "../../redux/user/userActions";
 
 var axios = require("axios");
 
@@ -45,8 +46,9 @@ function ImgLoginAuth() {
   
       axios(config)
         .then(function (response) {
-          console.log(JSON.stringify(response.data.token));
+     
           dispatch(token(response.data.token))
+          dispatch(getUser(response.data.user1))
         
         })
         .catch(function (error) {

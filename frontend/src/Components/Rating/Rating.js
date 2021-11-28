@@ -2,17 +2,18 @@ import React from 'react'
 import { StarEmpty,StarHalf,StarColor } from './RatingStyles'
 
 
-function Rating() {
-    let rating = 4;
+function Rating(rating) {
+  
+    let ratingG = Number(rating.rating)
   
 
     return (
         <>
         <i>
          {
-             rating >= 1
+             ratingG >= 1
              ? (<StarColor/>)
-             : rating >= 0.5
+             : ratingG >= 0.5
              ? (<StarHalf/>)
              : (<StarEmpty/>)
             }   
@@ -20,9 +21,9 @@ function Rating() {
 
         <i>
          {
-             rating >= 2
+             ratingG >= 2
              ? (<StarColor/>)
-             : rating >= 1.5
+             : ratingG >= 1.5
              ? (<StarHalf/>)
              : (<StarEmpty/>)
             }   
@@ -30,9 +31,9 @@ function Rating() {
 
         <i>
          {
-             rating >= 3
+             ratingG >= 3
              ? (<StarColor/>)
-             : rating >= 2.5
+             : ratingG >= 2.5
              ? (<StarHalf/>)
              : (<StarEmpty/>)
             }   
@@ -40,9 +41,9 @@ function Rating() {
 
         <i>
          {
-             rating >= 4
+             ratingG >= 4
              ? (<StarColor/>)
-             : rating >= 3.5
+             : ratingG >= 3.5
              ? (<StarHalf/>)
              : (<StarEmpty/>)
             }   
@@ -50,9 +51,9 @@ function Rating() {
 
         <i>
          {
-             rating >= 5
+             ratingG >= 5
              ? (<StarColor/>)
-             : rating >= 4.5
+             : ratingG >= 4.5
              ? (<StarHalf/>)
              : (<StarEmpty/>)
             }   

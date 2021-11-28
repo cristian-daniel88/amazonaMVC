@@ -71,13 +71,14 @@ const productChoice = async (req, res) => {
 const productAddReviews = async(req, res) => {
     const {id} = req.params,
     body = req.body
+    console.log(body)
     const product = await Product.findById(id);
     product.review.push(body);
 
     //product.review = [];
 
     const producto = await Product.findByIdAndUpdate(id, product)
-    
+        
     res.json({
         id,
         producto

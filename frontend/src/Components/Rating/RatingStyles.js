@@ -8,6 +8,7 @@ import StarHalfIcon from '@mui/icons-material/StarHalf';
 export const StarEmpty = styled(StarBorderIcon)`
 color: #f0c040;
 
+
 `;
 
 export const StarColor = styled(StarIcon)`

@@ -28,10 +28,11 @@ import {
   SpanReviews,
   ReviewUser,
 } from "./ProductStyles";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addItem } from "../../redux/cart/cartActions";
 import { useAuth0 } from "@auth0/auth0-react";
 import Review from "../Review/Review";
+import { updateReviewAction } from "../../redux/updateReview/updaReviewActions";
 
 
 var axios = require("axios");
@@ -41,7 +42,9 @@ function Product() {
   let { id } = useParams();
   const [product, setProduct] = useState(null);
   const [qty, setQty] = useState(1);
-  const {loginWithRedirect, isAuthenticated} = useAuth0()
+  const {loginWithRedirect, isAuthenticated} = useAuth0();
+  const reviews = useSelector(state => state.reviews.reviews);
+
 
   const history = useHistory();
 
@@ -77,20 +80,21 @@ function Product() {
 
     var config = {
       method: "get",
-      url: `http://localhost:8080/api/products/product/${id}`,
+      url: `${process.env.REACT_APP_PRODUCTOS_URL}/product/${id}`,
       headers: {},
       data: data,
     };
 
     axios(config)
       .then(function (response) {
-        //   console.log(response.data.product);
+        
+        dispatch(updateReviewAction(response.data.product.review))
         setProduct(response.data.product);
       })
       .catch(function (error) {
         console.log(error);
       });
-  }, [id]);
+  }, [id, dispatch]);
 
   useEffect(() => {
     axiosProduct();
@@ -119,16 +123,16 @@ function Product() {
               <Label>Stock: &nbsp; {product.stock}</Label>
             </LabelContainer>
             <LabelContainer>
-              <Rating />
+              
             </LabelContainer>
 
             <ContainerAddCart>
               <AddCart>
                 <LabelContainer>{product.name}</LabelContainer>
                 <LabelContainer style={{ display: "flex" }}>
-                  <Rating />
+                  <Rating rating={ product.review.reduce((acc, item)=> {return acc + Number(item.raiting)}, 0) / product.review.length} />
                   <div style={{ width: "100%", textAlign: "right" }}>
-                    {25} Reviews
+                    {product.review.length} Reviews
                   </div>
                 </LabelContainer>
                 <LabelContainer style={{ display: "flex" }}>
@@ -189,14 +193,19 @@ function Product() {
             </ContainerAddCart>
           </DetailsContainer>
 
-
-
           <ReviewsContainer>
             <SpanReviews>Reviews:</SpanReviews>
-            <ReviewUser>
-              <CommentUser>Pepe</CommentUser>
-              <RatingUser>5 puntos</RatingUser>
+
+          {reviews.map((value, index) => {
+         
+           return  (
+              <ReviewUser key={index}>
+              <CommentUser>{value.name}: {value.message}</CommentUser>
+              <RatingUser><Rating rating={value.raiting}/></RatingUser>
             </ReviewUser>
+            )
+          })}
+           
 
           </ReviewsContainer>
   
@@ -213,7 +222,7 @@ function Product() {
           :
           (
             <div style={{width:'100%'}}>
-              <Review id={id}/>
+              <Review id={id} axiosProduct={axiosProduct}/>
             </div>
           )
           }
