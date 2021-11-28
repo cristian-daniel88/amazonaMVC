@@ -1,9 +1,12 @@
+
 import React, {  } from 'react';
 import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router';
 
 import Loading from '../Loading/Loading';
-import { AddCartSearch, CartGridSearch, CartImageSearch, CartLabelSearch, CartSearch, NotFound, PriceSearch, ResultSearch, SearchProductsContainer, SoldOutSearch, StockSearch } from './SearchProductsStyles'
+import { RatingContainer } from '../Products/ProductsStyles';
+import Rating from '../Rating/Rating';
+import {  CartGridSearch, CartImageSearch, CartLabelSearch, CartSearch, NotFound, PriceSearch, ResultSearch, SearchProductsContainer, SoldOutSearch, StockSearch } from './SearchProductsStyles'
 
 
 
@@ -57,8 +60,12 @@ import { AddCartSearch, CartGridSearch, CartImageSearch, CartLabelSearch, CartSe
                 <CartLabelSearch>{val.name.slice(0,20)}</CartLabelSearch>
                 <PriceSearch>Price: £{val.price}</PriceSearch>
                 <StockSearch>Stock: {val.stock}</StockSearch>
+                <RatingContainer>
+                     <Rating rating=
+                     { val.review.reduce((acc, item)=> {return acc + Number(item.raiting)}, 0) / val.review.length} 
+                     />
+                </RatingContainer>
                 <SoldOutSearch></SoldOutSearch>
-                <AddCartSearch>Add Cart</AddCartSearch>
                 </CartSearch>
             
             )

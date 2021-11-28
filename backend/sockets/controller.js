@@ -61,10 +61,17 @@ const socketController = (socket = new Socket(), io) => {
         username: 'Administrador'
       }
     }
-  
+   
    
     io.to(user.room).emit("message", formatMessage(user.username="Manager", msg));
   });
+
+
+  socket.on('send_message', (msg)=> {
+    io.to(msg.username).emit("messageUser", formatMessage(msg.username, msg.text))
+  })
+
+ 
 
 
 };

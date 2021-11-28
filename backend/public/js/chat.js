@@ -48,6 +48,24 @@ chatForm.addEventListener("submit", (e) => {
    chatMessages.scrollTop = chatMessages.scrollHeight;
 });
 
+//messagefrom user
+socket.on('messageUser', (message) => {
+  console.log(message , 'mensajeuser');
+  outputMessageUser(message)
+
+   // Scroll down
+ chatMessages.scrollTop = chatMessages.scrollHeight;
+});
+
+socket.on('send_message', (message) => {
+  console.log(message );
+  outputMessage(message)
+
+   // Scroll down
+ chatMessages.scrollTop = chatMessages.scrollHeight;
+});
+
+
 
 function outputMessage(message) {
     const div = document.createElement('div');
@@ -63,6 +81,22 @@ function outputMessage(message) {
     div.appendChild(para);
     document.querySelector('.chat-messages').appendChild(div);
   }
+
+  function outputMessageUser(message) {
+    const div = document.createElement('div');
+    div.classList.add('messageUser');
+    const p = document.createElement('p');
+    p.classList.add('meta');
+    p.innerText = message.username;
+    p.innerHTML += `<span>${message.time}</span>`;
+    div.appendChild(p);
+    const para = document.createElement('p');
+    para.classList.add('text');
+    para.innerText = message.text;
+    div.appendChild(para);
+    document.querySelector('.chat-messages').appendChild(div);
+  }
+
 
 
   

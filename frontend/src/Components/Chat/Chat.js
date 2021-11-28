@@ -5,28 +5,45 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleHamburguerHiddenChat } from "../../redux/hamburguer/hamburguerActions";
 import {
+  ButtonChat,
   ChatIconContainer,
   ChatWindow,
   CloseChat,
   ContainerChat,
 
   Iconchat,
+  InputContainer,
 
   
 } from "./ChatStyles";
  import ScrollToBottom from "react-scroll-to-bottom";
+import {  InputLogin } from "../FormLogin/FormLoginStyles";
 
 function Chat({ socket, username, room, messageServer }) {
   const hidden = useSelector((state) => state.hamburguer.hiddenChat);
-//   const [currentMessage, setCurrentMessage] = useState("");
+  const [currentMessage, setCurrentMessage] = useState("");
 const [messageList, setMessageList] = useState([]);
 const dispatch = useDispatch();
 
+async function sendMessage(params) {
+  
+
+  const messageData = {
+    room: room,
+    username: username,
+    text: currentMessage,
+    time:
+      new Date(Date.now()).getHours() +
+      ":" +
+      new Date(Date.now()).getMinutes(),
+  };
+  await socket.emit("send_message", messageData);
+  setMessageList((list) => [...list, messageData]);
+  setCurrentMessage("");
+}
+
 useEffect(() => {
-    console.log(username);
-    console.log(socket);
     
-    console.log(messageServer)
     if (messageServer) {
     // // Message from server
     setMessageList((list) => [...list, messageServer]);
@@ -79,7 +96,23 @@ useEffect(() => {
                 })}
               
                 </ScrollToBottom>
-                
+                <InputContainer>
+                <InputLogin
+                    style={{width:'60%', display:"inline", marginRight:'2%'}}
+                   type="text"
+                   value={currentMessage}
+                   placeholder="Hey..."
+                   onChange={(event) => {
+                     setCurrentMessage(event.target.value);
+                    }}
+                    onKeyPress={(event) => {
+                      event.key === "Enter" && sendMessage();
+                    }}
+                    />
+                  
+                   <ButtonChat onClick={sendMessage}>Send</ButtonChat>
+
+                  </InputContainer>
           </ContainerChat>
             
         </CloseChat>

@@ -68,18 +68,10 @@ function Products({products, socket, username, room ,messageServer}) {
                   <Price>Price: £{val.price}</Price>
                   <Stock>Stock: {val.stock}</Stock>
                    <RatingContainer>
-
-                    
-                     
-              
-              
-                       
-
-                    
-                     
-                     <Rating rating={ val.review.reduce((acc, item)=> {return acc + Number(item.raiting)}, 0) / val.review.length} />
-                     
-                     </RatingContainer>
+                     <Rating rating=
+                     { val.review.reduce((acc, item)=> {return acc + Number(item.raiting)}, 0) / val.review.length} 
+                     />
+                    </RatingContainer>
                   <SoldOut></SoldOut>
                  
                   
