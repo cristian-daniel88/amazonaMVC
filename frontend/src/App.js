@@ -15,6 +15,7 @@ import { useState } from "react";
 import Product from "./Components/Product/Product";
 import { useCallback } from "react";
 import CartPage from "./Components/CartPage/CartPage";
+import Shipping from "./Components/Shipping/Shipping";
 
 const socket = io.connect("http://localhost:8080");
 
@@ -127,6 +128,11 @@ function App() {
     <Route exact path='/cart'>
       <CartPage/>
     </Route>
+
+    <Route exact path='/shipping'>
+      <Shipping/>
+    </Route>
+    
     
     
 

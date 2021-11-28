@@ -5,6 +5,7 @@ export const CartContainer = styled.div`
 width: 1.5em;
 height: 1.5em;
 position: relative;
+cursor: pointer;
 `
 
 export const Cart = styled(ShoppingCartIcon)`

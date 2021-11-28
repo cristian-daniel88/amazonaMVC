@@ -1,12 +1,19 @@
+
+let mongodb = require('mongodb');
+const orderModel = require('../models/orderModel');
+
 const Order = require('../models/orderModel');
 
-const orderSubmit = async (req, res) => {
-    const body = req.body
-    const newOrder = new Order(body);
-    const orderCreat = await Order.create(newOrder)
+
+const orderSubmit = async (request, res) => {
+    
+ 
+        var transfer = new Order(request.body);
+        transfer.save();
+    
 
     res.json({
-         msg: orderCreat
+         msg: 'created'
     });
 };
 

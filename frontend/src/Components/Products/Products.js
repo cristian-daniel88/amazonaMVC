@@ -8,7 +8,7 @@ import { useHistory } from "react-router-dom";
 
 import Loading from '../Loading/Loading';
 
-import {AddCart, Cart, CartGrid, CartImage, CartLabel, Price, ProductsContainer, SoldOut, Stock, SubtitleStyled} from './ProductsStyles';
+import { Cart, CartGrid, CartImage, CartLabel, Price, ProductsContainer, SoldOut, Stock, SubtitleStyled} from './ProductsStyles';
 
 
 
@@ -67,7 +67,7 @@ function Products({products, socket, username, room ,messageServer}) {
                   <Price>Price: £{val.price}</Price>
                   <Stock>Stock: {val.stock}</Stock>
                   <SoldOut></SoldOut>
-                  <AddCart>Add Cart</AddCart>
+                 
                   
                   </Cart>
                   

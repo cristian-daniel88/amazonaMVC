@@ -29,6 +29,7 @@ import { notFoundAction } from "../../redux/notFound/notFoundActions";
 var axios = require("axios");
 
 function NavBar() {
+  const ordenes = useSelector((state) => state.cart.cartItems);
   const { isAuthenticated } = useAuth0();
   const dispatch = useDispatch();
   const history = useHistory();
@@ -95,6 +96,9 @@ function NavBar() {
 
 
   }
+  const goCart = ()=> {
+    history.push('/cart')
+  }
 
   const handleToggle = () => {
     dispatch(hamburguerActions.toggleHamburguerHidden());
@@ -135,10 +139,10 @@ function NavBar() {
 
       <ContainerCartSignIn>
         <LiCartSignIn></LiCartSignIn>
-        <CartContainer>
+        <CartContainer onClick={goCart}>
           <Cart />
           <Cart0>
-            <div style={{ textAlign: "center" }}></div>
+            <div style={{ textAlign: "center", fontSize:'1.5em' }}>{ordenes?.length}</div>
           </Cart0>
         </CartContainer>
         {isAuthenticated ? <LogOutAuth0 /> : <LoginAuth0 />}

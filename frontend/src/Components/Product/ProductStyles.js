@@ -16,6 +16,7 @@ export const ImgProductContainer = styled.div`
   justify-content: center;
   align-items: center;
   min-width: 200px;
+  user-select: none;
 
   @media screen and (max-width: 700px) {
     width: 100%;
@@ -84,3 +85,53 @@ export const AddCart = styled.div`
     width: 100%;
   }
 `;
+
+export const NoAuthenticatedReview = styled.div`
+    color: #2020a0;
+    background-color: #e0e0ff;
+    width: 100%;
+
+    padding: 1rem;
+    border: 0.1rem solid transparent;
+    border-radius: 0.5rem;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+`
+
+export const ButtonNoAtuhenticated = styled.div`
+display: inline;
+cursor: pointer;
+color: blueviolet;
+
+&:hover {
+  color: #ff8000;
+}
+`
+
+export const ReviewsContainer =styled.div`
+
+
+`;
+
+export const SpanReviews = styled.div`
+padding: 5px 0;
+
+font-weight: 600;
+
+font-family: Helvetica, Arial, sans-serif;
+
+`
+
+export const ReviewUser = styled.div`
+
+`;
+
+export const CommentUser = styled.div `
+
+`;
+
+export const RatingUser = styled.div`
+
+`;
+

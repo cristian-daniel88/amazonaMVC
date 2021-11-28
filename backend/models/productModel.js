@@ -49,6 +49,8 @@ const ProductSchema = Schema({
         type: String,
         required: [true, 'Product must have a size'],
     },
+
+    review:[]
  
  
 
