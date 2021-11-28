@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const path = require("path");
+require('dotenv').config();
 
 
 const fileUpload = require("express-fileupload");
@@ -18,7 +19,7 @@ class Server {
     this.server = require('http').createServer(this.app);
     this.io = require('socket.io')(this.server, {
       cors: {
-        origin: "http://localhost:3000",
+        origin: "https://amazing-ecomerce.herokuapp.com",
         methods: ["GET", "POST"]
 
       }
